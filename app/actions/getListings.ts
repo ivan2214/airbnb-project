@@ -36,13 +36,13 @@ export default async function getListings(params: IListingsParams) {
 
     if (roomCount) {
       query.roomCount = {
-        gte: +roomCount,
+        gte: +roomCount, // operador "greater than or equal to" (>=) para asegurarse de que solo se devuelvan los listados que tienen al menos esa cantidad de habitaciones.
       };
     }
 
     if (guestCount) {
       query.guestCount = {
-        gte: +guestCount,
+        gte: +guestCount, // operador "greater than or equal to" (>=) para asegurarse de que solo se devuelvan los listados que tienen al menos esa cantidad de habitaciones.
       };
     }
 
@@ -60,14 +60,18 @@ export default async function getListings(params: IListingsParams) {
       query.NOT = {
         reservations: {
           some: {
+            // Busca si hay alguna reserva que cumpla la siguiente condición
             OR: [
+              // Busca si se cumple al menos una de las siguientes dos condiciones
               {
-                endDate: { gte: startDate },
-                startDate: { lte: startDate },
+                // Condición 1
+                endDate: { gte: startDate }, // La fecha de finalización de la reserva es mayor o igual a la fecha de inicio del rango proporcionado
+                startDate: { lte: startDate }, // La fecha de inicio de la reserva es menor o igual a la fecha de inicio del rango proporcionado
               },
               {
-                startDate: { lte: endDate },
-                endDate: { gte: endDate },
+                // Condición 2
+                startDate: { lte: endDate }, // La fecha de inicio de la reserva es menor o igual a la fecha de finalización del rango proporcionado
+                endDate: { gte: endDate }, // La fecha de finalización de la reserva es mayor o igual a la fecha de finalización del rango proporcionado
               },
             ],
           },

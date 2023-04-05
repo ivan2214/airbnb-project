@@ -30,7 +30,7 @@ const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ src, alt }) => {
         alt={alt}
       />
       {!cargada && (
-        <div className="absolute left-0 top-0 h-full w-full animate-pulse bg-gray-300 opacity-50" />
+        <div className="absolute left-0 top-0 h-full w-full animate-pulse bg-gray-900 opacity-50" />
       )}
     </div>
   );
