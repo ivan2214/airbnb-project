@@ -1,27 +1,25 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect } from "react";
+import Loading from "./Loading";
 
 interface ClientOnlyProps {
   children: React.ReactNode;
 }
 
-const ClientOnly: React.FC<ClientOnlyProps> = ({ 
-  children
-}) => {
+const ClientOnly: React.FC<ClientOnlyProps> = ({ children }) => {
   const [hasMounted, setHasMounted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-      setHasMounted(true);
-  }, [])
+    setHasMounted(true);
+    setLoading(false);
+  }, []);
 
-  if (!hasMounted) return null;
+  if (!hasMounted || loading) {
+    return <Loading />;
+  }
 
-  return (
-    <>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
 
 export default ClientOnly;

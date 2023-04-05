@@ -2,7 +2,7 @@
 
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { SafeReservation, SafeUser } from "@/app/types";
@@ -10,6 +10,7 @@ import { SafeReservation, SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
+import Loading from "../components/Loading";
 
 interface TripsClientProps {
   reservations: SafeReservation[];
@@ -42,6 +43,18 @@ const TripsClient: React.FC<TripsClientProps> = ({
     },
     [router]
   );
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Container>

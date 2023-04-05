@@ -16,6 +16,7 @@ import { categories } from "@/app/components/NavBar/Categories";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import ListingReservation from "@/app/components/listings/ListingReservation";
+import Loading from "@/app/components/Loading";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -99,6 +100,18 @@ const ListingClient: React.FC<ListingClientProps> = ({
       }
     }
   }, [dateRange, listing.price]);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Container>

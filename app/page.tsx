@@ -5,6 +5,7 @@ import EmptyState from "@/app/components/EmptyState";
 import getListings, { IListingsParams } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
+import Loading from "./components/Loading";
 
 interface HomeProps {
   searchParams: IListingsParams;
@@ -20,6 +21,10 @@ const Home = async ({ searchParams }: HomeProps) => {
         <EmptyState showReset />
       </ClientOnly>
     );
+  }
+
+  if (!listings) {
+    return <Loading />;
   }
 
   return (
