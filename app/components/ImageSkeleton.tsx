@@ -26,7 +26,7 @@ const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ src, alt }) => {
           transition 
           group-hover:scale-110
         "
-        src={cargada ? src : "https://via.placeholder.com/300x300?text=false"}
+        src={cargada ? src : "https://via.placeholder.com/300x300?text="}
         alt={alt}
       />
       {!cargada && (
