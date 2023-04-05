@@ -26,6 +26,9 @@ export default async function RootLayout({
   const currentUser = await getCurrentUser();
   return (
     <html lang="es">
+      <head>
+        <link rel="icon" href="/images/airbnb-logo.png" />
+      </head>
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
