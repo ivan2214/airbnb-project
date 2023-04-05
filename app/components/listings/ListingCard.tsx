@@ -11,6 +11,7 @@ import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
 import ClientOnly from "../ClientOnly";
+import ImageSkeleton from "../ImageSkeleton";
 
 interface ListingCardProps {
   data: SafeListing;
@@ -83,18 +84,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             rounded-xl
           "
         >
-          <Image
-            fill
-            className="
-              h-full 
-              w-full 
-              object-cover 
-              transition 
-              group-hover:scale-110
-            "
-            src={data.imageSrc}
-            alt="Listing"
-          />
+          <ImageSkeleton  src={data.imageSrc} alt={data.description} />
           <div
             className="
             absolute
