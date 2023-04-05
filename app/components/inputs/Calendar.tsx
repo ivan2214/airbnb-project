@@ -1,5 +1,5 @@
 "use client";
-
+// @ts-ignore
 import { DateRange, Range, RangeKeyDict } from "react-date-range";
 
 import "react-date-range/dist/styles.css";

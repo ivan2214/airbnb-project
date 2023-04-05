@@ -1,5 +1,5 @@
 "use client";
-
+// @ts-ignore
 import { Range } from "react-date-range";
 
 import Button from "../Button";
